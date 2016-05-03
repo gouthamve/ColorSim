@@ -21,6 +21,7 @@ public class Color {
     private double XYZEpsilon = 0.008856; // 216/24389
     private double XYZKappa = 903.3; // 24389/27
 
+    public Color(){};
     public Color(double[] rgb) {
         if (rgb.length != 3) {
             System.out.println("Wrong args! This should never happen :/");
