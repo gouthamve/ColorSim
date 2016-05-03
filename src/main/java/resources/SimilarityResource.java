@@ -5,9 +5,11 @@ package resources;
  */
 import api.Color;
 import api.Similarity;
+import api.payloads.SimilarityPayload;
 import com.codahale.metrics.annotation.Timed;
 
 
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
@@ -25,5 +27,11 @@ public class SimilarityResource {
         Color c1 = new Color(r1, g1, b1);
         Color c2 = new Color(r2, g2, b2);
         return new Similarity(c1, c2);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Similarity retSimilarity2(@Valid SimilarityPayload sp) {
+        return new Similarity(new Color(sp.rgb1), new Color(sp.rgb2));
     }
 }
